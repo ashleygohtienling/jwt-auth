@@ -22,11 +22,14 @@ function LoginForm ({Login, error}){
                 </Form.Field>
                 <Form.Field>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@email.com" onChange={e => setDetails({...details, email:e.target.value})} value = {details.email}/>            
+                <input type="email" id="email" name="email" placeholder="email@email.com" onChange={e => setDetails({...details, email:e.target.value})} value = {details.email}
+                error = {{
+                    content: 'Please input a valid email address',
+                    pointing: 'Below',}}/>            
                 </Form.Field>   
                 <Form.Field >
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="8 characters"/>
+                <input type="password" id="password" name="password" placeholder="8 characters" onChange={e => setDetails({...details, password:e.target.value})} value = {details.password}/>
                 </Form.Field>
                 <Form.Field>
                 <Checkbox label= "I agree to the terms and conditions"/>
