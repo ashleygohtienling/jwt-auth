@@ -1,10 +1,10 @@
 import React, {useState } from 'react'
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Checkbox} from 'semantic-ui-react'
 
 
 
 function LoginForm ({Login, error}){
-    const [details, setDetails] = useState({name: "", email:""})
+    const [details, setDetails] = useState({name: "", email:"", password:""})
 
     const submitHandler = e =>{
 
@@ -17,14 +17,22 @@ function LoginForm ({Login, error}){
                  <h1> Login Page </h1>
             <Form onSubmit = {submitHandler} >
                 <Form.Field>
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" placeholder="name" onChange={e => setDetails({...details, name:e.target.value})} value = {details.name}/>            
+                </Form.Field>
+                <Form.Field>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@email.com"/>            
-                </Form.Field>           
+                <input type="email" id="email" name="email" placeholder="email@email.com" onChange={e => setDetails({...details, email:e.target.value})} value = {details.email}/>            
+                </Form.Field>   
                 <Form.Field >
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="8 characters"/>
                 </Form.Field>
+                <Form.Field>
+                <Checkbox label= "I agree to the terms and conditions"/>
+                </Form.Field>
                 <Button primary>Login</Button>
+                <Button secondary>Forget Password</Button>
             </Form>
         </div>
         )
