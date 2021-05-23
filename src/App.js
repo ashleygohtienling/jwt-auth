@@ -1,20 +1,37 @@
-import React from 'react'
-import {BrowserRouter as Router, Route,Link, Switch} from 'react-router-dom'
-import HomePage from './Components/HomePage'
+import React, {useState} from 'react'
 import LoginForm from './Components/LoginForm'
 
 
 
 function App() {
+  const adminUser = {
+    email: "admin@admin.com",
+    password:"admin123"
+  }
+
+  const [user, setUser] = useState({name:"", email:""});
+  const [error, setError] = useState ("");
+
+  const Login = details => {
+    console.log(details);
+  }
+
+  const Logout = () =>{
+    console.log("Logout");
+  }
+
+
   return (
     <div className="ui container">
-      <Router>
-      <Switch>
-      <Route path = "/" exact component={HomePage}/>
-      <Route path = "/login" component={LoginForm}/>
-      </Switch>
-      </Router>
+      {(user.email !== "") ? (
+        <div className = "welcome">
+          <h2> Welcome <span>{user.name} </span> </h2>
+          <button> Logout </button>
+          </div>
+      ) : (
+        <LoginForm Login={Login} error= {error} />
+      )}
     </div>
-  )
+  );
   }
 export default App;

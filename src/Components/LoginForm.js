@@ -1,28 +1,26 @@
-import React, { Component } from 'react'
+import React, {useState } from 'react'
 import {Form, Button} from 'semantic-ui-react'
 
-class LoginForm extends Component {
-    state= {
-        data: {
-            email: "",
-            password:""
-        },
-        loading: false,
-        errors:{},
+
+
+function LoginForm ({Login, error}){
+    const [details, setDetails] = useState({name: "", email:""})
+
+    const submitHandler = e =>{
+
+        e.preventDefault();
+        Login(details);
     }
 
-    onChange = e => this.setState({data:{...this.state.data}, [e.target.name]: e.target.value})
-
-    render() {
-        const{data} = this.state
         return (
             <div>
-            <Form>
+                 <h1> Login Page </h1>
+            <Form onSubmit = {submitHandler} >
                 <Form.Field>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@email.com" value= {data.email} onChange={this.onChange}/>
-                </Form.Field>
-                <Form.Field>
+                <input type="email" id="email" name="email" placeholder="email@email.com"/>            
+                </Form.Field>           
+                <Form.Field >
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="8 characters"/>
                 </Form.Field>
@@ -30,7 +28,7 @@ class LoginForm extends Component {
             </Form>
         </div>
         )
-    }
-}
+    };
 
-export default LoginForm
+
+export default LoginForm;
