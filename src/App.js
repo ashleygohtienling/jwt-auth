@@ -27,7 +27,8 @@ function App() {
 
 
   const Logout = () =>{
-    console.log("Logout");
+    setUser({name:"", email:"", password:""})
+    
   }
 
 
@@ -36,7 +37,7 @@ function App() {
       {(user.email !== "") ? (
         <div className = "welcome">
           <h2> Welcome <span>{user.name} </span> </h2>
-          <button> Logout </button>
+          <button onClick = {Logout}> Logout </button>
           </div>
       ) : (
         <LoginForm Login={Login} error= {error} />
